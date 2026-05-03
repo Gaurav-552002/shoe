@@ -1,0 +1,21 @@
+<div class="main">
+    <div>
+        <input id="Search-box" [(ngModel)]="SearchText" placeholder="Search your favourite product"> 
+        <!-- ng module for adding search functionality -->
+        <button id="Search-btn" *ngIf="SearchText" (click)="Searchbutton()">Search</button>
+        <h1 *ngIf="SearchText">Showing results for : {{Text}}</h1>
+        <!-- ngif for hide the button when search text is empty -->
+    </div>
+    
+    <div class="products">
+        <div id="product"  *ngFor="let item of products">
+            <img src="{{item.image}}" [alt]="item.name" width="290px" height="160px">
+            <h2>{{ item.name }}</h2>
+            <h3 style="text-decoration: line-through;" [ngStyle]="{textDecoration: discount ? 'line-through' : 'none'}">{{ item.price }}{{discount}}</h3>
+            <button id="add-btn">
+                <img src="assets/cart icon.png" width="30px" height="30px">
+                Add To Cart</button>
+        </div>
+
+    </div>
+</div>
