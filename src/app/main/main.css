@@ -16,18 +16,25 @@
     font-size: 20px;
 }
 
+#price{
+    display: flex;
+    column-gap: 30px;
+}
 #Search-btn{
     height: 53px;
     width: 80px;
     border: 1px solid #000;
     cursor: pointer;
 }
+#cart{
+    display: flex;
+}
 
 #product{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    height: 350px;
+    height: 400px;
     width: 300px;
     background-color: white;
     border-radius: 1rem;

@@ -6,15 +6,32 @@
         <h1 *ngIf="SearchText">Showing results for : {{Text}}</h1>
         <!-- ngif for hide the button when search text is empty -->
     </div>
-    
-    <div class="products">
-        <div id="product"  *ngFor="let item of products">
+
+    <div style="display: flex;">
+        <img src="assets/cart icon.png" width=30px>
+        <p> Check yor cart: {{cartCount}}</p>
+    </div>
+       <div class="products">
+        <div id="product"  *ngFor="let item of products; let i =index">
             <img src="{{item.image}}" [alt]="item.name" width="290px" height="160px">
             <h2>{{ item.name }}</h2>
-            <h3 style="text-decoration: line-through;" [ngStyle]="{textDecoration: discount ? 'line-through' : 'none'}">{{ item.price }}{{discount}}</h3>
-            <button id="add-btn">
+            <div id="price">
+                <h3 style="display: inline;">{{ item.price }}</h3>
+                <h3 style="color: #bbb; display: inline; text-decoration: line-through;">{{ item.aprice }}</h3>
+            </div>
+            <p *ngIf="item.inStock" style="color: green; font-weight: bold;"> Available</p>
+            <p *ngIf="!item.inStock" style="color: red; font-weight: bold;"> Out of Stock</p>
+            
+            <button *ngIf="item.inStock" id="add-btn" (click)="addToCart(i)">
                 <img src="assets/cart icon.png" width="30px" height="30px">
-                Add To Cart</button>
+                <p style="display: inline;"> Add to Cart</p>
+                <!-- <p>Already added to cart</p> -->
+            </button>
+
+            <button *ngIf="!item.inStock" id="add-btn" onclick="alert('This product is currently out of stock. Please check later. Or better, go to shalimar bro 🤣')">
+                Notify Me</button>
+
+            
         </div>
 
     </div>
