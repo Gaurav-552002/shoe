@@ -1,1 +1,18 @@
-<p>cart works!</p>
+<div class="container">
+    <div class="cart">
+        <div style="display: flex; justify-content: space-between;">
+            <h3>Shoe Cart</h3>
+            <a href="#" (click)="removeAll()">Remove All</a>
+        </div>
+        <div *ngFor="let item of addedProducts" id="added-product">
+            <img src="{{item.image}}" width="150">
+            <h3>{{item.name}}</h3>
+            <h3> RS {{item.price}}</h3>
+
+            
+        </div>
+        <hr>
+        <h2 style="text-align: right;" (click)="subtotal()">Subtotal: RS: {{total}}</h2>
+    </div>
+
+</div>
